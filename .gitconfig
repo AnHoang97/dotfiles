@@ -1,0 +1,11 @@
+# This is Git's per-user configuration file.
+[user]
+	name = An Hoang
+	email = anhoang31415@gmail.com
+[merge]
+	tool = vimdiff
+	conflictstyle = diff3
+[mergetool]
+	prompt = false
+[alias]
+	yolo = !git commit -m \"$(curl -s api.kanye.rest/?format=text)\"

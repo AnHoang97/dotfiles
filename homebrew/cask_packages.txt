@@ -1,0 +1,10 @@
+amethyst
+font-hack-nerd-font
+font-roboto-mono-nerd-font
+iterm2
+mactex
+rstudio
+skim
+visual-studio-code
+vscodium
+xquartz
