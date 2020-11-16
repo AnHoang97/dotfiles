@@ -1,0 +1,21 @@
+#!/bin/sh
+
+# Use neovim for vim if present.
+command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d"
+
+# Colorize commands when possible.
+alias \
+	ls="ls -G" \
+	addmark="mark" \
+
+# shorten long commands
+alias \
+	fs="fsession" \
+	"tmux-attach"="tmux -f ~/.config/tmux/.tmux.conf new-session -A -s main" \
+	ta="tmux-attach" \
+
+# new commands
+alias \
+	pycalc="python -i -c 'from math import *; import numpy as np'" \
+	shred="rm -P"
+
