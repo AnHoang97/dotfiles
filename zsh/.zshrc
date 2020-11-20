@@ -28,10 +28,9 @@ HISTFILE=~/.cache/zsh_history
 setopt inc_append_history
 
 # Basic auto/tab complete:
-autoload -U compinit
+autoload -U compinit && compinit
 zstyle ':completion:*' menu select
 zmodload zsh/complist
-compinit
 _comp_options+=(globdots)		# Include hidden files.
 
 # vi mode
@@ -67,16 +66,6 @@ zle -N zle-line-init
 echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
-# Use lf to switch directories and bind it to ctrl-o
-lfcd () {
-    tmp="$(mktemp)"
-    lf -last-dir-path="$tmp" "$@"
-    if [ -f "$tmp" ]; then
-        dir="$(cat "$tmp")"
-        rm -f "$tmp"
-        [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
-    fi
-}
 bindkey -s '^f' 'fcd ~\n'
 bindkey '^e' edit-command-line
 bindkey -s '^r' 'ranger\n'
@@ -88,7 +77,8 @@ bindkey '^ ' autosuggest-accept
 
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
+
+# load plugins
 source "$HOME/.config/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "$HOME/.config/zsh/plugins/fzf-marks/fzf-marks.plugin.zsh"
 source "$HOME/.config/zsh/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh"
-source "$HOME/.config/zsh/plugins/zsh-system-clipboard"

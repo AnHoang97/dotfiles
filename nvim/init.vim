@@ -223,6 +223,9 @@ augroup END
 	nnoremap <right> :cnext<cr>
 	nnoremap <left> :cprevious<cr>
 	autocmd bufenter *.c,*.h nnoremap <cr> :make<cr>
+	
+	"sudo write
+	cmap w!! w !sudo tee > /dev/null %
 
 
 " =====================================================================

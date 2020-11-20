@@ -8,9 +8,9 @@
 #
 
 #Append dirs to serach path
-export PATH="$HOME/Scripts/rserver:$PATH"
+# export PATH="$HOME/Scripts/rserver:$PATH"
 export PATH="/Users/Shared/anaconda3/bin:$PATH"
-export PATH="/usr/local/opt/llvm/bin:$PATH"
+# export PATH="/usr/local/opt/llvm/bin:$PATH"
 
 # ~/ Clean-up:
 export LESSHISTFILE="-"
@@ -28,10 +28,10 @@ export FZF_DEFAULT_COMMAND='ag -f --hidden --ignore .git -g ""'
 # When havin $PATH problems goto: https://pgib.me//blog/2013/10/11/macosx-tmux-zsh-rbenv/
 # exec tmux -f ~/.config/tmux/.tmux.conf new-session -A -s main
 
-export LDFLAGS="-L/usr/local/opt/llvm/lib"
-export CPPFLAGS="-I/usr/local/opt/llvm/include"
-export DYLD_LIBRARY_PATH="/usr/local/Cellar/llvm/10.0.1/lib"
-export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/lib
+# export LDFLAGS="-L/usr/local/opt/llvm/lib"
+# export CPPFLAGS="-I/usr/local/opt/llvm/include"
+# export DYLD_LIBRARY_PATH="/usr/local/Cellar/llvm/10.0.1/lib"
+# export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/lib
 
 # Add direnv hook
-command -v direnv &>/dev/null && eval "$(direnv hook zsh)" || echo "direnv does not exits."
+# command -v direnv &>/dev/null && eval "$(direnv hook zsh)" || echo "direnv does not exits."
