@@ -18,6 +18,7 @@ export ZSH="/Users/anhoang/.config/oh-my-zsh"
 export LESSHISTFILE="-"
 export ZDOTDIR="$HOME/.config/zsh"
 export ZPLUG_HOME="$HOME/.config/zplug"
+export ZGEN_DIR="$HOME/.config/zgen/plugins"
 
 # Default programms
 export EDITOR="nvim"

@@ -9,37 +9,30 @@
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
 [ -f "$HOME/.config/fzf/commands.sh" ] && source "$HOME/.config/fzf/commands.sh"
 
-ZSH_THEME="myagnoster"
+# load zgen
+source "${HOME}/.config/zgen/zgen.zsh"
 
-COMPLETION_WAITING_DOTS="true"
+# if the init script doesn't exist
+if ! zgen saved; then
+	#theme
+	zgen load AnHoang97/agnoster-zsh-theme agnoster
 
-# source oh-my-zsh
-source $ZSH/oh-my-zsh.sh
+	# specify plugins here
+	zgen load urbainvaes/fzf-marks
+	zgen load kutsan/zsh-system-clipboard
+	zgen load AnHoang97/zsh-vim-mode
+	zgen load zsh-users/zsh-completions
+	zgen load zsh-users/zsh-syntax-highlighting
+	zgen load zsh-users/zsh-autosuggestions
 
-# source zplug
-source $ZPLUG_HOME/init.zsh
+	# completion
+	zgen load esc/conda-zsh-completion.zsh-theme
 
-zplug urbainvaes/fzf-marks
-zplug zsh-users/zsh-autosuggestions
-zplug kutsan/zsh-system-clipboard
-zplug AnHoang97/vim-mode-zsh
-zplug "plugins/git",   from:oh-my-zsh
-zplug "plugins/colored-man-pages",   from:oh-my-zsh
-
-# Install plugins if there are plugins that have not been installed
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
+	# generate the init script from plugins above
+	zgen save
 fi
 
-# Then, source plugins and add commands to $PATH
-zplug load 
-
-# configure key bindings
 bindkey -s '^f' 'fcd ~\n'
-bindkey -s '^b' 'fzm\n'
+bindkey '^e' edit-command-line
 bindkey -s '^r' 'ranger\n'
 bindkey '^ ' autosuggest-accept
-
