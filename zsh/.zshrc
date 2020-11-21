@@ -1,6 +1,3 @@
-# Luke's config for the Boomer Shell
-# modified by me
-
 #            _
 #    _______| |__  _ __ ___
 #   |_  / __| '_ \| '__/ __|
@@ -12,73 +9,37 @@
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
 [ -f "$HOME/.config/fzf/commands.sh" ] && source "$HOME/.config/fzf/commands.sh"
 
-export LC_ALL="en_US.UTF-8"
+ZSH_THEME="myagnoster"
 
-# Enable colors and change prompt:
-autoload -U colors && colors
-# Penis PS1
-# PS1="%{$fg[magenta]%}8===> %{$reset_color%}%(3~|../%2~|%~) "
-PS1="%B%{$fg[yellow]%}%n%{$fg[red]%}@%{$fg[green]%}%M %{$fg[magenta]%}%(3~|../%2~|%~)%{$reset_color%}$%b "
+COMPLETION_WAITING_DOTS="true"
 
-# History in cache directory:
-HISTSIZE=10000
-SAVEHIST=10000
-HISTFILE=~/.cache/zsh_history
+# source oh-my-zsh
+source $ZSH/oh-my-zsh.sh
 
-setopt inc_append_history
+# source zplug
+source $ZPLUG_HOME/init.zsh
 
-# Basic auto/tab complete:
-autoload -U compinit && compinit
-zstyle ':completion:*' menu select
-zmodload zsh/complist
-_comp_options+=(globdots)		# Include hidden files.
+zplug urbainvaes/fzf-marks
+zplug zsh-users/zsh-autosuggestions
+zplug kutsan/zsh-system-clipboard
+zplug AnHoang97/vim-mode-zsh
+zplug "plugins/git",   from:oh-my-zsh
+zplug "plugins/colored-man-pages",   from:oh-my-zsh
 
-# vi mode
-bindkey -v
-export KEYTIMEOUT=1
+# Install plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
 
-# Use vim keys in tab complete menu:
-bindkey -M menuselect 'h' vi-backward-char
-bindkey -M menuselect 'k' vi-up-line-or-history
-bindkey -M menuselect 'l' vi-forward-char
-bindkey -M menuselect 'j' vi-down-line-or-history
-bindkey -v '^?' backward-delete-char
+# Then, source plugins and add commands to $PATH
+zplug load --verbose
 
-# Change cursor shape for different vi modes.
-function zle-keymap-select {
-  if [[ ${KEYMAP} == vicmd ]] ||
-     [[ $1 = 'block' ]]; then
-    echo -ne '\e[1 q'
-  elif [[ ${KEYMAP} == main ]] ||
-       [[ ${KEYMAP} == viins ]] ||
-       [[ ${KEYMAP} = '' ]] ||
-       [[ $1 = 'beam' ]]; then
-    echo -ne '\e[5 q'
-  fi
-}
-
-zle -N zle-keymap-select
-zle-line-init() {
-    zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
-    echo -ne "\e[5 q"
-}
-zle -N zle-line-init
-echo -ne '\e[5 q' # Use beam shape cursor on startup.
-preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
-
+# configure key bindings
 bindkey -s '^f' 'fcd ~\n'
-bindkey '^e' edit-command-line
+bindkey -s '^b' 'fzm\n'
 bindkey -s '^r' 'ranger\n'
 bindkey '^ ' autosuggest-accept
 
-# conda completion (commented out cause too slow)
-# fpath+=/Users/anhoang/.config/zsh/plugins/conda-zsh-completion
-# compinit
-
-# Edit line in vim with ctrl-e:
-autoload edit-command-line; zle -N edit-command-line
-
-# load plugins
-source "$HOME/.config/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
-source "$HOME/.config/zsh/plugins/fzf-marks/fzf-marks.plugin.zsh"
-source "$HOME/.config/zsh/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh"
