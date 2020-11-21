@@ -11,7 +11,7 @@ alias \
 # shorten long commands
 alias \
 	fs="fsession" \
-	"tmux-attach"="tmux -f ~/.config/tmux/.tmux.conf new-session -A -s main" \
+	"tmux-attach"="tmux -f ~/.config/tmux/tmux.conf new-session -A -s main" \
 	ta="tmux-attach" \
 
 # new commands
