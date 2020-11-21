@@ -9,9 +9,8 @@
 # make -C .config all
 
 #########  install zsh config ##################
-# install my oh-my-zsh
-export ZSH="$HOME/.config/oh-my-zsh"
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/AnHoang97/ohmyzsh/master/tools/install.sh)"
+# install my zgen
+git clone https://github.com/tarjoilija/zgen.git "${HOME}/.config/zgen"
 
 # install zplug
 export ZPLUG_HOME="$HOME/.config/zplug"

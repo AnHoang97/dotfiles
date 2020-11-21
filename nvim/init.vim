@@ -143,11 +143,9 @@ augroup END
 	let g:airline#extensions#tabline#enabled = 1
 	let g:airline#extensions#tabline#show_buffers = 1
 	let g:airline#extensions#tabline#switch_buffers_and_tabs = 0
-	" power saving
-	let g:ale_lint_on_text_changed = "normal"
-	let g:ale_lint_delay = 1000
-	let g:ale_completion_enabled = 1
 	let g:airline#extensions#tagbar#enabled = 1
+	let g:airline#extensions#ale#enabled = 1
+	let g:airline_powerline_fonts = 1
 
 " =====================================================================
 " Undotree SETTINGS
@@ -162,9 +160,12 @@ augroup END
 " =====================================================================
 " ALE SETTINGS
 " =====================================================================
-	let g:airline#extensions#ale#enabled = 1
 	nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 	nmap <silent> <C-j> <Plug>(ale_next_wrap)
+	" power saving
+	let g:ale_lint_on_text_changed = "normal"
+	let g:ale_lint_delay = 1000
+	let g:ale_completion_enabled = 1
 
 " =====================================================================
 " FZF SETTINGS
