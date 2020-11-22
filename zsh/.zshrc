@@ -9,8 +9,13 @@
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
 [ -f "$HOME/.config/fzf/commands.sh" ] && source "$HOME/.config/fzf/commands.sh"
 
+
+
 # load zgen
 source "${HOME}/.config/zgen/zgen.zsh"
+
+# load lf config
+[ -f  "${HOME}/.config/lf/lf.config.sh" ] && source "${HOME}/.config/lf/lf.config.sh"
 
 # if the init script doesn't exist
 if ! zgen saved; then
@@ -34,5 +39,6 @@ fi
 
 bindkey -s '^f' 'fcd ~\n'
 bindkey '^e' edit-command-line
-bindkey -s '^r' 'ranger\n'
+bindkey -s '^l' 'lfcd\n'
 bindkey '^ ' autosuggest-accept
+

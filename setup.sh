@@ -1,6 +1,5 @@
 # RUN FROM HOME !!!
 
-
 # install homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
@@ -11,15 +10,6 @@
 #########  install zsh config ##################
 # install my zgen
 git clone https://github.com/tarjoilija/zgen.git "${HOME}/.config/zgen"
-
-# install zplug
-export ZPLUG_HOME="$HOME/.config/zplug"
-curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh
-
-# # install zsh plugins (introduce oh-my-zsh to delete this)
-# git clone https://github.com/kutsan/zsh-system-clipboard.git $HOME/.config/zsh/plugins/zsh-system-clipboard
-# git clone https://github.com/urbainvaes/fzf-marks.git $HOME/.config/zsh/plugins/fzf-marks/fzf-marks.plugin.zsh
-# git clone https://github.com/zsh-users/zsh-autosuggestions.git "$HOME/.config/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
 # some add rights
 sudo chmod -R 755 /usr/local/share/zsh/site-functions
