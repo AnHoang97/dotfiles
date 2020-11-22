@@ -1,36 +1,52 @@
-
 # Basic vars
 set shell sh
 set shellopts '-eu'
 set ifs "\n"
 set scrolloff 10
-set icons
+set icons 1
 set period 1
-
+set preview 1
 set previewer ~/.config/lf/pv.sh
-map i $~/.config/lf/pv.sh $f | less -R
+set ignorecase 1
 
-map y
-map yy :copy
-map yp %dirname $f | pbcopy
-map yf %basename $f | pbcopy
-map yn %echo $f | pbcopy
-map yg push :glob-select<space>
+# remaps
+map D delete 
 
-map p
-map pp paste
-map pl soft_link
+map c
+map cc cd ~/.config
+map cd push :cd<space>
+map cf fzf
+map ci cd ~/iCloud
+map co cd ~/Documents
+map cp cd ~/Projects
+map cs cd ~/iCloud/School
+map cw cd ~/Downloads
 
 map o %open $f 
-map D delete 
+
+map p
+map pl soft_link
+map pp paste
+
 map x $$f 
 
+map y
+map yf %basename $f | pbcopy
+map yg push :glob-select<space>
+map yn %echo $f | pbcopy
+map yp %dirname $f | pbcopy
+map yy :copy
+
+# custom commands
 cmd touch %touch "$(echo $* | tr ' ' '\ ')"
 cmd mkdir %mkdir "$(echo $* | tr ' ' '\ ')"
 cmd open_with $$* $f
-cmd open_all $$open $fx
+cmd open_all $open $fx
 cmd visual %$VISUAL .
 
+cmd mkfile ${{
+	$EDITOR $1
+}}
 
 cmd bulk-rename ${{
 	index=$(mktemp /tmp/lf-bulk-rename-index.XXXXXXXXXX)
@@ -101,4 +117,14 @@ cmd test ${{
 	echo $fs >> test.test
 	echo $fx >> test.test
 	echo $id >> test.test
+}}
+
+cmd fzf ${{
+  res="$(find ${1:-.} -type d 2> /dev/null | fzf --reverse --header='Jump to location')"
+  if [ -f "$res" ]; then
+    cmd="select"
+  elif [ -d "$res" ]; then
+    cmd="cd"
+  fi
+  lf -remote "send $id $cmd \"$res\""
 }}

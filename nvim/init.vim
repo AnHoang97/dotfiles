@@ -72,6 +72,9 @@ call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"
 
 	"chad tree > nerd tree
 	Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': ':UpdateRemotePlugins'}
+
+	" theme
+	Plug 'arcticicestudio/nord-vim'
 call plug#end()
 
 augroup AutoSaveFolds
@@ -83,6 +86,10 @@ augroup END
 " =====================================================================
 " BASIC SETTINGS
 " =====================================================================
+"
+	" set colorscheme to nord
+	colorscheme nord
+
 	set mouse=a
 	set hlsearch
 	set clipboard+=unnamedplus

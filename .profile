@@ -9,7 +9,7 @@
 export LC_ALL="en_US.UTF-8"
 
 #Append dirs to serach path
-export PATH="/Users/Shared/anaconda4/bin:$PATH"
+export PATH="/Users/Shared/anaconda3/bin:$PATH"
 
 # ~/ Clean-up:
 export LESSHISTFILE="-"
@@ -21,6 +21,7 @@ export ZGEN_DIR="$HOME/.config/zgen/plugins"
 export EDITOR="nvim"
 export VISUAL="code"
 export FILE="ranger"
+export GIT_EDITOR="nvim"
 
 # FZF defaults
 export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"

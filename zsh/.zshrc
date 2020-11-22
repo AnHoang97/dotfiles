@@ -9,6 +9,8 @@
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
 [ -f "$HOME/.config/fzf/commands.sh" ] && source "$HOME/.config/fzf/commands.sh"
 
+# load dircolors (doesnt work on osx)
+# eval $( gdircolors $HOME/.config/dir_colors )
 
 # load zgen
 source "${HOME}/.config/zgen/zgen.zsh"
