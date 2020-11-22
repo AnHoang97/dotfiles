@@ -9,7 +9,7 @@
 export LC_ALL="en_US.UTF-8"
 
 #Append dirs to serach path
-export PATH="/Users/Shared/anaconda4/bin:$PATH"
+export PATH="/Users/Shared/anaconda3/bin:$PATH"
 
 # ~/ Clean-up:
 export LESSHISTFILE="-"

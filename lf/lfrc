@@ -28,7 +28,7 @@ map x $$f
 cmd touch %touch "$(echo $* | tr ' ' '\ ')"
 cmd mkdir %mkdir "$(echo $* | tr ' ' '\ ')"
 cmd open_with $$* $f
-cmd open_all $$open $fx
+cmd open_all $open $fx
 cmd visual %$VISUAL .
 
 
