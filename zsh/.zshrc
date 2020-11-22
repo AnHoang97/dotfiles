@@ -10,7 +10,6 @@
 [ -f "$HOME/.config/fzf/commands.sh" ] && source "$HOME/.config/fzf/commands.sh"
 
 
-
 # load zgen
 source "${HOME}/.config/zgen/zgen.zsh"
 
@@ -41,4 +40,3 @@ bindkey -s '^f' 'fcd ~\n'
 bindkey '^e' edit-command-line
 bindkey -s '^l' 'lfcd\n'
 bindkey '^ ' autosuggest-accept
-
