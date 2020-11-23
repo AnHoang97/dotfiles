@@ -19,7 +19,6 @@ export ZGEN_DIR="$HOME/.config/zgen/plugins"
 
 # Default programms
 export EDITOR="nvim"
-export VISUAL="code"
 export FILE="ranger"
 export GIT_EDITOR="nvim"
 
