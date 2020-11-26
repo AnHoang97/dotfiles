@@ -27,10 +27,6 @@ call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"
 	" multicoursor
 	Plug 'mg979/vim-visual-multi'
 
-	" Tags
-	Plug 'craigemery/vim-autotag'
-	Plug 'majutsushi/tagbar'
-
 	" " FZF
 	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 	Plug 'junegunn/fzf.vim'
@@ -38,25 +34,11 @@ call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"
 	" add indent object (mainly for python)
 	Plug 'michaeljsmith/vim-indent-object'
 
-	" latex
-	Plug 'lervag/vimtex'
-
-	" Snippets
-	Plug 'SirVer/ultisnips'
-	Plug 'AnHoang97/vim-snippets'
-
-	" session
-	Plug 'xolox/vim-session'
-	Plug 'xolox/vim-misc'
-
 	" linting
 	Plug 'w0rp/ale'
 
 	" autocomplete
 	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } "deoplete
-	Plug 'deoplete-plugins/deoplete-jedi' "python plugin
-	Plug 'tweekmonster/deoplete-clang2' "c plugin
-	Plug 'ncm2/float-preview.nvim'
 
 	"auto close brackets
 	Plug 'jiangmiao/auto-pairs'
@@ -66,12 +48,6 @@ call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"
 
 	" undotree
 	Plug 'mbbill/undotree'
-
-	"chad tree > nerd tree
-	Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': ':UpdateRemotePlugins'}
-
-	" theme
-	Plug 'arcticicestudio/nord-vim'
 call plug#end()
 
 augroup AutoSaveFolds
@@ -85,8 +61,6 @@ augroup END
 " =====================================================================
 "
 	" set colorscheme to nord
-	colorscheme nord
-
 	set mouse=a
 	set hlsearch
 	set clipboard+=unnamedplus
@@ -95,7 +69,6 @@ augroup END
 	set smartcase
 
 	" Some basics:
-	nnoremap c "_c
 	set nocompatible
 	filetype plugin on
 	syntax enable
@@ -118,7 +91,6 @@ augroup END
 	autocmd FileType tex set spelllang=en_us,de_de
 	autocmd FileType tex set spellsuggest=best
 
-
 	"make regex magic
 	nnoremap / /\v\c
 	vnoremap / /\v\c
@@ -137,29 +109,6 @@ augroup END
 	    let &undodir = target_path
 	    set undofile
 	endif
-
-	" set python host
-	let g:python3_host_prog = '/Users/Shared/anaconda3/bin/python'
-
-" =====================================================================
-" Airline SETTINGS
-" =====================================================================
-	let g:airline#extensions#tabline#enabled = 1
-	let g:airline#extensions#tabline#show_buffers = 1
-	let g:airline#extensions#tabline#switch_buffers_and_tabs = 0
-	let g:airline#extensions#tagbar#enabled = 1
-	let g:airline#extensions#ale#enabled = 1
-	let g:airline_powerline_fonts = 1
-
-" =====================================================================
-" Undotree SETTINGS
-" =====================================================================
-	nnoremap <leader>u :UndotreeToggle<cr>
-
-" =====================================================================
-" chad tree SETTINGS
-" =====================================================================
-	nnoremap <leader>c <cmd>CHADopen<cr>
 
 " =====================================================================
 " ALE SETTINGS
@@ -184,31 +133,6 @@ augroup END
 
 
 " =====================================================================
-" Latex SETTINGS
-" =====================================================================
-	let g:tex_flavor = 'latex'
-	let g:vimtex_view_method = 'skim'
-	let g:vimtex_fold_enabled = 2
-
-	" latex macros
-	autocmd bufenter *.tex let @u="%mr%ml`ri \\right`li \\left"
-	autocmd bufenter *.tex let @d="ml%B6x`l5x"
-
-	autocmd bufenter *.tex inoremap <c-space> <c-x><c-o>
-	autocmd bufenter *.tex nnoremap gt yi}:b<space><c-r>0.tex<cr>
-	autocmd bufenter *.tex nnoremap <c-t> :Tags<cr>
-	autocmd bufenter *.tex nnoremap <c-rightmouse> <c-]>
-	autocmd bufenter *.tex nnoremap <bs> :b main.tex<tab><cr>
-
-" =====================================================================
-" SNIPEPTS SETTINGS
-" =====================================================================
-	let g:UltiSnipsExpandTrigger = '<tab>'
-	let g:UltiSnipsJumpForwardTrigger = '<tab>'
-	let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
-
-
-" =====================================================================
 " VIM-SESSION SETTINGS
 " =====================================================================
 	let g:session_autosave = 'yes'
@@ -216,30 +140,6 @@ augroup END
 	let g:session_directory = '~/.cache/nvim/session'
 
 " =====================================================================
-" MACROS
-" =====================================================================
- 	vnoremap <localleader>s y:%s/<C-r>0//g<left><left>
-
- 	vnoremap <localleader>e :!translate --target_lang EN<cr>
- 	vnoremap <localleader>d :!translate --target_lang DE --formality more<cr>
- 	vmap <localleader>i <space>egv<space>d
-
- 	nnoremap <localleader><localleader> za
-	nnoremap <right> :cnext<cr>
-	nnoremap <left> :cprevious<cr>
-	autocmd bufenter *.c,*.h nnoremap <cr> :make<cr>
-	
-	"sudo write
-	cmap w!! w !sudo tee > /dev/null %
-
-
-" =====================================================================
 " Deoplete SETTINGS
 " =====================================================================
 	let g:deoplete#enable_at_startup = 1
-	let g:deoplete#sources#jedi#show_docstring = 1
-	" This is new style
-	autocmd bufenter *.tex call deoplete#custom#var('omni', 'input_patterns', {
-	  	  \ 'tex': g:vimtex#re#deoplete
-	  	  \})
-
