@@ -1,4 +1,5 @@
 # Basic vars
+
 set shell sh
 set shellopts '-eu'
 set ifs "\n"
@@ -120,7 +121,7 @@ cmd test ${{
 }}
 
 cmd fzf ${{
-  res="$(find ${1:-.} -type d 2> /dev/null | fzf --reverse --header='Jump to location')"
+  res="$(find ${1:-.} 2> /dev/null | fzf --reverse --header='Jump to location')"
   if [ -f "$res" ]; then
     cmd="select"
   elif [ -d "$res" ]; then

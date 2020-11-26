@@ -9,19 +9,20 @@
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
 [ -f "$HOME/.config/fzf/commands.sh" ] && source "$HOME/.config/fzf/commands.sh"
 
-# load dircolors (doesnt work on osx)
-# eval $( gdircolors $HOME/.config/dir_colors )
-
 # load zgen
 source "${HOME}/.config/zgen/zgen.zsh"
 
 # load lf config
 [ -f  "${HOME}/.config/lf/lf.config.sh" ] && source "${HOME}/.config/lf/lf.config.sh"
 
+# load spaceship config
+[ -f  "${HOME}/.config/spaceship/config.sh" ] && source "${HOME}/.config/spaceship/config.sh"
+
 # if the init script doesn't exist
 if ! zgen saved; then
 	#theme
-	zgen load AnHoang97/agnoster-zsh-theme agnoster
+	# zgen load AnHoang97/agnoster-zsh-theme agnoster
+	zgen load denysdovhan/spaceship-prompt spaceship
 
 	# specify plugins here
 	zgen load urbainvaes/fzf-marks
@@ -31,7 +32,7 @@ if ! zgen saved; then
 	zgen load zsh-users/zsh-syntax-highlighting
 	zgen load zsh-users/zsh-autosuggestions
 
-	# completion
+	# # completion
 	zgen load esc/conda-zsh-completion.zsh-theme
 
 	# generate the init script from plugins above

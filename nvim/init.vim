@@ -6,7 +6,6 @@
 
 let mapleader=","
 let maplocalleader=" "
-let g:VM_leader=","
 
 if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/plug.vim"'))
 	echo "Downloading junegunn/vim-plug to manage plugins..."
@@ -21,9 +20,6 @@ call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"
 	Plug 'tpope/vim-commentary'
 	Plug 'tpope/vim-repeat'
 	Plug 'tpope/vim-fugitive'
-
-	Plug 'danro/rename.vim'
-	Plug 'triglav/vim-visual-increment'
 
 	" Status bar
 	Plug 'vim-airline/vim-airline'
@@ -56,10 +52,11 @@ call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"
 	" linting
 	Plug 'w0rp/ale'
 
-	" autocomplete 
+	" autocomplete
 	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } "deoplete
 	Plug 'deoplete-plugins/deoplete-jedi' "python plugin
 	Plug 'tweekmonster/deoplete-clang2' "c plugin
+	Plug 'ncm2/float-preview.nvim'
 
 	"auto close brackets
 	Plug 'jiangmiao/auto-pairs'
@@ -240,6 +237,7 @@ augroup END
 " Deoplete SETTINGS
 " =====================================================================
 	let g:deoplete#enable_at_startup = 1
+	let g:deoplete#sources#jedi#show_docstring = 1
 	" This is new style
 	autocmd bufenter *.tex call deoplete#custom#var('omni', 'input_patterns', {
 	  	  \ 'tex': g:vimtex#re#deoplete
