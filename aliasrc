@@ -5,7 +5,7 @@ command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d"
 
 # Colorize commands when possible.
 alias \
-	ls="ls -G" \
+	ls="ls --color" \
 	addmark="mark" \
 
 # shorten long commands

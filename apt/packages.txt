@@ -1,0 +1,5 @@
+awscli
+lf
+neovim
+xclip
+zsh
