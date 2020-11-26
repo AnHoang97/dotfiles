@@ -18,6 +18,9 @@ source "${HOME}/.config/zgen/zgen.zsh"
 # load spaceship config
 [ -f  "${HOME}/.config/spaceship/config.sh" ] && source "${HOME}/.config/spaceship/config.sh"
 
+# run tmux if started from iTerm2
+[ $TERM_PROGRAM = "iTerm.app" ] && [ -z $TMUX ] && tmux-attach
+
 # if the init script doesn't exist
 if ! zgen saved; then
 	# fancy prompt
