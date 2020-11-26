@@ -9,7 +9,8 @@
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
 [ -f "$HOME/.config/fzf/commands.sh" ] && source "$HOME/.config/fzf/commands.sh"
 
-# load zgen
+# install zgen if not exists and load command
+[ -d "${HOME}/.config/zgen" ] || git clone https://github.com/tarjoilija/zgen.git "${HOME}/.config/zgen"
 source "${HOME}/.config/zgen/zgen.zsh"
 
 # load lf config
@@ -17,6 +18,9 @@ source "${HOME}/.config/zgen/zgen.zsh"
 
 # load spaceship config
 [ -f  "${HOME}/.config/spaceship/config.sh" ] && source "${HOME}/.config/spaceship/config.sh"
+
+# run tmux if started from iTerm2
+[ $TERM_PROGRAM = "iTerm.app" ] && [ -z $TMUX ] && tmux-attach
 
 # if the init script doesn't exist
 if ! zgen saved; then
