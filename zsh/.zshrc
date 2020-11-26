@@ -5,7 +5,6 @@
 # (_)___|___/_| |_|_|  \___|
 
 # Load aliases and shortcuts if existent.
-[ -f "$HOME/.config/shortcutrc" ] && source "$HOME/.config/shortcutrc"
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
 [ -f "$HOME/.config/fzf/commands.sh" ] && source "$HOME/.config/fzf/commands.sh"
 
@@ -18,9 +17,6 @@ source "${HOME}/.config/zgen/zgen.zsh"
 
 # load spaceship config
 [ -f  "${HOME}/.config/spaceship/config.sh" ] && source "${HOME}/.config/spaceship/config.sh"
-
-# run tmux if started from iTerm2
-[ $TERM_PROGRAM = "iTerm.app" ] && [ -z $TMUX ] && tmux-attach
 
 # if the init script doesn't exist
 if ! zgen saved; then
