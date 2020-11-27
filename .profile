@@ -26,6 +26,5 @@ export GIT_EDITOR="nvim"
 export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
 export FZF_DEFAULT_COMMAND='ag -f --hidden --ignore .git -g ""'
 
-
 # Add direnv hook
 # command -v direnv &>/dev/null && eval "$(direnv hook zsh)" || echo "direnv does not exits."

@@ -20,7 +20,7 @@ source "${HOME}/.config/zgen/zgen.zsh"
 [ -f  "${HOME}/.config/spaceship/config.sh" ] && source "${HOME}/.config/spaceship/config.sh"
 
 # run tmux if started from iTerm2
-[ $TERM_PROGRAM = "iTerm.app" ] && [ -z $TMUX ] && tmux-attach
+[ $TERM_PROGRAM = "iTerm.app" ] && [ -z $TMUX ] && exec tmux -f $HOME/.config/tmux/tmux.conf new-session -A -s main
 
 # if the init script doesn't exist
 if ! zgen saved; then
@@ -35,8 +35,14 @@ if ! zgen saved; then
 	zgen load zsh-users/zsh-syntax-highlighting
 	zgen load zsh-users/zsh-autosuggestions
 
-	# # completion
-	zgen load esc/conda-zsh-completion.zsh-theme
+	zgen oh-my-zsh
+	zgen oh-my-zsh plugins/docker
+	zgen oh-my-zsh plugins/docker-machine
+	zgen oh-my-zsh plugins/docker-compose
+	zgen oh-my-zsh plugins/aws
+	zgen oh-my-zsh plugins/brew
+
+	zgen load esc/conda-zsh-completion
 
 	# generate the init script from plugins above
 	zgen save
@@ -46,3 +52,6 @@ bindkey -s '^f' 'fcd ~\n'
 bindkey '^e' edit-command-line
 bindkey -s '^l' 'lfcd\n'
 bindkey '^ ' autosuggest-accept
+
+# prevent conda from changing ps1
+conda config --set changeps1 False
